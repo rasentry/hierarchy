@@ -24,7 +24,7 @@ describe('<editor-hierarchy>', function() {
     function setTree (snapshot) {
         tree._lastSnapshot = null;
         var ipcListener = panel['scene:reply-query-hierarchy'];
-        ipcListener.call(panel, tree._queryID, snapshot);
+        ipcListener.call(panel, tree._queryID, '', snapshot);
     }
 
     it('should create elements when ready', function () {
