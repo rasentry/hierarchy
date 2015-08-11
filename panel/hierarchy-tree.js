@@ -631,7 +631,7 @@ Polymer({
         }
     },
 
-    _storeItemStatesRecursively ( results, idPath, el ) {
+    _storeItemStatesRecursively: function ( results, idPath, el ) {
     },
 
     _storeItemStates: function ( sceneID ) {
@@ -825,7 +825,7 @@ Polymer({
                 var siblings = itemAParentDOM.childNodes;
                 indexA = Array.prototype.indexOf.call(siblings, itemA);
                 indexB = Array.prototype.indexOf.call(siblings, itemB);
-                return indexB - indexA;
+                return indexA - indexB;
             }
             else {
 
