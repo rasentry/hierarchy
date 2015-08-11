@@ -509,6 +509,15 @@ Polymer({
         }
     },
 
+    hintItemById: function ( id ) {
+        this.expand( id, true );
+        var itemEL = this._id2el[id];
+        if (itemEL) {
+            this.scrollToItem(itemEL);
+            itemEL.hint();
+        }
+    },
+
     _hintNew: function ( el ) {
         requestAnimationFrame( function () {
             el.hint( 'green', 500 );

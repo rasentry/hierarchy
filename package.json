@@ -46,6 +46,7 @@
         "scene:ready",
         "scene:reloading",
         "scene:reply-query-hierarchy",
+        "hierarchy:hint",
         "hierarchy:rename",
         "hierarchy:delete",
         "hierarchy:show-path"

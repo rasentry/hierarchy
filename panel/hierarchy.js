@@ -165,6 +165,10 @@ Editor.registerPanel( 'hierarchy.panel', {
         this.$.tree._updateSceneGraph(queryID, sceneID, nodes);
     },
 
+    'hierarchy:hint': function ( uuid ) {
+        this.$.tree.hintItemById(uuid);
+    },
+
     'hierarchy:rename': function ( id ) {
         var el = this.$.tree._id2el[id];
         if ( el ) {
