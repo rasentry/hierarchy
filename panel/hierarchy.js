@@ -181,6 +181,14 @@ Editor.registerPanel( 'hierarchy.panel', {
         Editor.sendToPanel( 'scene.panel', 'scene:delete-nodes', ids);
     },
 
+    'hierarchy:duplicate': function ( ids ) {
+        var contexts = Editor.Selection.contexts('node');
+        var ids = this.$.tree.getToplevelElements(contexts).map(function (element) {
+            return element && element._userId;
+        });
+        Editor.sendToPanel('scene.panel', 'scene:duplicate-nodes', ids);
+    },
+
     'hierarchy:show-path': function ( id ) {
         Editor.info( 'Path: %s, ID: %s', id, this.$.tree.getPathByID(id) );
     },

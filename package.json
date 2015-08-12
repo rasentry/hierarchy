@@ -49,6 +49,7 @@
         "hierarchy:hint",
         "hierarchy:rename",
         "hierarchy:delete",
+        "hierarchy:duplicate",
         "hierarchy:show-path"
       ],
       "profiles": {

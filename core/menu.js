@@ -8,6 +8,16 @@ function getContextTemplate () {
         },
 
         {
+            label: 'Duplicate',
+            click: function() {
+                var contexts = Editor.Selection.contexts('node');
+                if ( contexts.length > 0 ) {
+                    Editor.sendToPanel('hierarchy.panel', 'hierarchy:duplicate', contexts);
+                }
+            },
+        },
+
+        {
             // ---------------------------------------------
             type: 'separator'
         },
