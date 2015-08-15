@@ -467,7 +467,7 @@ Polymer({
                 path: 'name',
                 type: 'String',
                 value: this.$.nameInput.value,
-                isMixin: false,
+                mixinType: '',
             });
 
             this.$.nameInput._renamingEL = null;
