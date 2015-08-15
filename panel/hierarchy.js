@@ -64,7 +64,8 @@ Editor.registerPanel( 'hierarchy.panel', {
             event.preventDefault();
         }
 
-        this['hierarchy:duplicate'](Editor.Selection.curSelection('node'));
+        var ids = Editor.Selection.curSelection('node');
+        Editor.sendToPanel('scene.panel', 'scene:duplicate-nodes', ids);
     },
 
     // TODO: make it better
@@ -191,9 +192,6 @@ Editor.registerPanel( 'hierarchy.panel', {
     },
 
     'hierarchy:duplicate': function ( ids ) {
-        ids = this.$.tree.getToplevelElements(ids).map(function (element) {
-            return element && element._userId;
-        });
         Editor.sendToPanel('scene.panel', 'scene:duplicate-nodes', ids);
     },
 
