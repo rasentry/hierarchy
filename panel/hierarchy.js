@@ -58,6 +58,15 @@ Editor.registerPanel( 'hierarchy.panel', {
         Editor.sendToPanel( 'scene.panel', 'scene:delete-nodes', ids);
     },
 
+    duplicateCurrentSelected: function ( event ) {
+        if ( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
+        this['hierarchy:duplicate'](Editor.Selection.curSelection('node'));
+    },
+
     // TODO: make it better
     shiftSelectPrev: function ( event ) {
         if ( event ) {
@@ -182,8 +191,7 @@ Editor.registerPanel( 'hierarchy.panel', {
     },
 
     'hierarchy:duplicate': function ( ids ) {
-        var contexts = Editor.Selection.contexts('node');
-        var ids = this.$.tree.getToplevelElements(contexts).map(function (element) {
+        ids = this.$.tree.getToplevelElements(ids).map(function (element) {
             return element && element._userId;
         });
         Editor.sendToPanel('scene.panel', 'scene:duplicate-nodes', ids);
