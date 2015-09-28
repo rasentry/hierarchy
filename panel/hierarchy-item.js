@@ -1,7 +1,6 @@
 (function () {
 
-Editor.registerWidget( 'hierarchy-item', {
-    is: 'hierarchy-item',
+Editor.registerElement({
 
     hostAttributes: {
         draggable: 'true',

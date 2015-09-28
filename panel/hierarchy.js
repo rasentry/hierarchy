@@ -1,8 +1,6 @@
 (function () {
 
 Editor.registerPanel( 'hierarchy.panel', {
-    is: 'editor-hierarchy',
-
     properties: {
     },
 

@@ -2,8 +2,7 @@
 var Path = require('fire-path');
 var treeDiff = Editor.require('packages://hierarchy/utils/tree-diff');
 
-Polymer({
-    is: 'hierarchy-tree',
+Editor.registerElement({
 
     behaviors: [EditorUI.focusable, EditorUI.droppable, EditorUI.idtree],
 
@@ -154,13 +153,13 @@ Polymer({
         if ( !element )
             return '';
 
-        if ( !element instanceof Editor.widgets['hierarchy-item'] ) {
+        if ( element.tagName !== 'HIERARCHY-ITEM' ) {
             return '';
         }
 
         var path = element.name;
         var parentEL = Polymer.dom(element).parentNode;
-        while (parentEL instanceof Editor.widgets['hierarchy-item']) {
+        while (parentEL.tagName === 'HIERARCHY-ITEM') {
             path = Path.join(parentEL.name, path);
             parentEL = Polymer.dom(parentEL).parentNode;
         }
@@ -712,8 +711,7 @@ Polymer({
     _newEntryRecursively: function ( entry, id2el ) {
         var el = id2el[entry.id];
         if ( !el ) {
-            var ctor = Editor.widgets['hierarchy-item'];
-            el = new ctor();
+            el = document.createElement('hierarchy-item');
         }
 
         if ( entry.children ) {
@@ -734,7 +732,7 @@ Polymer({
     // highlighting
 
     _highlightBorder: function ( itemEL ) {
-        if ( itemEL && itemEL instanceof Editor.widgets['hierarchy-item'] ) {
+        if ( itemEL && itemEL.tagName === 'HIERARCHY-ITEM' ) {
             var style = this.$.highlightBorder.style;
             style.display = 'block';
             style.left = (itemEL.offsetLeft-2) + 'px';
