@@ -440,6 +440,7 @@ Editor.registerElement({
                               );
         }
         else if ( event.detail.dragType === 'asset' ) {
+            this.setFocus();
             Editor.sendToPanel('scene.panel',
                                'scene:create-nodes-by-uuids',
                                event.detail.dragItems,
