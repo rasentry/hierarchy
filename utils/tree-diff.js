@@ -1,3 +1,5 @@
+'use strict';
+
 // Algorithms:
 // - http://www.cs.haifa.ac.il/~oren/Publications/TEDinTALG.pdf
 // - http://www.sciencedirect.com/science/article/pii/S0304397505000174
@@ -60,7 +62,6 @@ function compareChildren ( context, lastChildren, newChildren, parentId ) {
     var endNew = newChildren.length;
 
     var lastIndex = 0, newIndex = 0;
-    var i, len;
     while (lastIndex < endLast || newIndex < endNew) {
         // append new node
         if (lastIndex >= endLast) {
