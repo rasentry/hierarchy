@@ -459,15 +459,14 @@ Editor.registerElement({
         event.stopPropagation();
     },
 
-    _onRenameValueChanged: function ( event ) {
+    _onRenameValueChanged: function () {
         var targetEL = this.$.nameInput._renamingEL;
         if ( targetEL ) {
-            Editor.sendToPanel('scene.panel', 'scene:node-set-property', {
+            Editor.sendToPanel('scene.panel', 'scene:set-property', {
                 id: targetEL._userId,
                 path: 'name',
                 type: 'String',
                 value: this.$.nameInput.value,
-                mixinType: '',
             });
 
             this.$.nameInput._renamingEL = null;
