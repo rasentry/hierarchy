@@ -468,6 +468,7 @@ Editor.registerElement({
                 type: 'String',
                 value: this.$.nameInput.value,
             });
+            Editor.sendToPanel('scene.panel', 'scene:undo-commit');
 
             this.$.nameInput._renamingEL = null;
             this.$.nameInput.hidden = true;
