@@ -61,12 +61,16 @@ function getContextTemplate () {
 }
 
 function getCreateTemplate ( isContextMenu ) {
-    var menuTmpl = Editor.menus['create-node'];
-    if ( !menuTmpl ) {
-        return [
-            { label: '(None)', enabled: false },
-        ];
-    }
+    var menuTmpl = Editor.menus['create-node'] || [];
+    menuTmpl.unshift(
+        {
+            label: 'Create Empty',
+            message: 'scene:create-node-by-classid',
+            params: [
+                'New Node', ''
+            ],
+        }
+    );
 
     var position = isContextMenu ? 'child' : 'sibling';
     var referenceID;

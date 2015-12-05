@@ -459,16 +459,16 @@ Editor.registerElement({
         event.stopPropagation();
     },
 
-    _onRenameValueChanged: function ( event ) {
+    _onRenameValueChanged: function () {
         var targetEL = this.$.nameInput._renamingEL;
         if ( targetEL ) {
-            Editor.sendToPanel('scene.panel', 'scene:node-set-property', {
+            Editor.sendToPanel('scene.panel', 'scene:set-property', {
                 id: targetEL._userId,
                 path: 'name',
                 type: 'String',
                 value: this.$.nameInput.value,
-                mixinType: '',
             });
+            Editor.sendToPanel('scene.panel', 'scene:undo-commit');
 
             this.$.nameInput._renamingEL = null;
             this.$.nameInput.hidden = true;
@@ -546,7 +546,7 @@ Editor.registerElement({
                     this.addItem( newParent, newEL, {
                         id: node.id,
                         name: node.name,
-                        canHaveChildren: node.canHaveChildren !== false,
+                        //canHaveChildren: node.canHaveChildren !== false,
                     } );
                     this._hintNew( newEL );
                     break;
@@ -615,7 +615,7 @@ Editor.registerElement({
                     this.addItem( newParent, newEL, {
                         id: node.id,
                         name: node.name,
-                        canHaveChildren: node.canHaveChildren !== false,
+                        //canHaveChildren: node.canHaveChildren !== false,
                     } );
                     this._hintNew( newEL );
                     beforeNode = Polymer.dom(newParent).childNodes[cmd.index];
@@ -698,7 +698,7 @@ Editor.registerElement({
             this.addItem( this, newEL, {
                 id: entry.id,
                 name: entry.name,
-                canHaveChildren: entry.canHaveChildren !== false,
+                //canHaveChildren: entry.canHaveChildren !== false,
             } );
 
             newEL.folded = false;
@@ -721,7 +721,7 @@ Editor.registerElement({
                 this.addItem( el, childEL, {
                     id: childEntry.id,
                     name: childEntry.name,
-                    canHaveChildren: childEntry.canHaveChildren !== false,
+                    //canHaveChildren: childEntry.canHaveChildren !== false,
                 } );
                 // childEL.folded = false;
             }.bind(this) );
@@ -741,10 +741,10 @@ Editor.registerElement({
             style.width = (itemEL.offsetWidth+4) + 'px';
             style.height = (itemEL.offsetHeight+3) + 'px';
 
-            if ( !itemEL.canHaveChildren ) {
-                itemEL.invalid = true;
-                this.$.highlightBorder.setAttribute('invalid', '');
-            }
+            //if ( !itemEL.canHaveChildren ) {
+            //    itemEL.invalid = true;
+            //    this.$.highlightBorder.setAttribute('invalid', '');
+            //}
 
             itemEL.highlighted = true;
         }
