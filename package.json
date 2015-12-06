@@ -35,7 +35,11 @@
           "command+backspace": "deleteCurrentSelected",
           "del": "deleteCurrentSelected",
           "command+d": "duplicateCurrentSelected",
-          "ctrl+d": "duplicateCurrentSelected"
+          "ctrl+d": "duplicateCurrentSelected",
+          "command+c": "copyCurrentSelected",
+          "ctrl+c": "copyCurrentSelected",
+          "command+v": "pasteIntoActive",
+          "ctrl+v": "pasteIntoActive"
         }
       },
       "messages": [
