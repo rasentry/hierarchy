@@ -95,7 +95,7 @@ function getCreateTemplate ( isContextMenu ) {
 
     // NOTE: this will prevent menu item pollution
     var menuTmpl = Editor.Menu.getMenu('create-node');
-    Editor.Menu.forEach( menuTmpl, item => {
+    Editor.Menu.walk( menuTmpl, item => {
         if ( item.params ) {
             item.params.push(referenceID);
             item.params.push(position);
