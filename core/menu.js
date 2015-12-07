@@ -95,12 +95,11 @@ function getCreateTemplate ( isContextMenu ) {
 
     // NOTE: this will prevent menu item pollution
     var menuTmpl = Editor.Menu.getMenu('create-node');
-    menuTmpl = menuTmpl.map ( function ( item ) {
+    Editor.Menu.forEach( menuTmpl, item => {
         if ( item.params ) {
             item.params.push(referenceID);
             item.params.push(position);
         }
-        return item;
     });
 
     return menuTmpl;
