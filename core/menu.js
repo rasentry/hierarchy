@@ -8,6 +8,29 @@ function getContextTemplate () {
         },
 
         {
+            // ---------------------------------------------
+            type: 'separator'
+        },
+
+        {
+            label: 'Copy',
+            click: function() {
+                var contexts = Editor.Selection.contexts('node');
+                Editor.sendToPanel('scene.panel', 'scene:copy-nodes', contexts);
+            },
+        },
+
+        {
+            label: 'Paste',
+            click: function() {
+                var contexts = Editor.Selection.contexts('node');
+                if (contexts.length > 0) {
+                    Editor.sendToPanel('scene.panel', 'scene:paste-nodes', contexts[0]);
+                }
+            },
+        },
+
+        {
             label: 'Duplicate',
             click: function() {
                 var contexts = Editor.Selection.contexts('node');

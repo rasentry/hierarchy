@@ -66,6 +66,26 @@ Editor.registerPanel( 'hierarchy.panel', {
         Editor.sendToPanel('scene.panel', 'scene:duplicate-nodes', ids);
     },
 
+    copyCurrentSelected: function ( event ) {
+        if ( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
+        var ids = Editor.Selection.curSelection('node');
+        Editor.sendToPanel('scene.panel', 'scene:copy-nodes', ids);
+    },
+
+    pasteIntoActive: function ( event ) {
+        if ( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
+        var id = Editor.Selection.curActivate('node');
+        Editor.sendToPanel('scene.panel', 'scene:paste-nodes', id);
+    },
+
     // TODO: make it better
     shiftSelectPrev: function ( event ) {
         if ( event ) {
