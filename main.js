@@ -15,7 +15,7 @@ module.exports = {
     'hierarchy:popup-create-menu': function (event, x, y) {
         var template = Menu.getCreateTemplate();
         var editorMenu = new Editor.Menu(template, event.sender);
-        // TODO: editorMenu.add( '', Editor.menus['create-asset'] );
+        // TODO: editorMenu.add( '', Editor.Menu.getMenu('create-asset') );
 
         x = Math.floor(x);
         y = Math.floor(y);

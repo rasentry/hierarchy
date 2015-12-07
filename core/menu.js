@@ -1,4 +1,4 @@
-var Shell = require('shell');
+'use strict';
 
 function getContextTemplate () {
     return [
@@ -82,17 +82,6 @@ function getContextTemplate () {
 }
 
 function getCreateTemplate ( isContextMenu ) {
-    var menuTmpl = Editor.menus['create-node'] || [];
-    menuTmpl.unshift(
-        {
-            label: 'Create Empty',
-            message: 'scene:create-node-by-classid',
-            params: [
-                'New Node', ''
-            ],
-        }
-    );
-
     var position = isContextMenu ? 'child' : 'sibling';
     var referenceID;
     if ( isContextMenu ) {
@@ -105,7 +94,7 @@ function getCreateTemplate ( isContextMenu ) {
     }
 
     // NOTE: this will prevent menu item pollution
-    menuTmpl = JSON.parse(JSON.stringify(menuTmpl));
+    var menuTmpl = Editor.Menu.getMenu('create-node');
     menuTmpl = menuTmpl.map ( function ( item ) {
         if ( item.params ) {
             item.params.push(referenceID);
