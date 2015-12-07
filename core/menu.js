@@ -24,9 +24,7 @@ function getContextTemplate () {
             label: 'Paste',
             click: function() {
                 var contexts = Editor.Selection.contexts('node');
-                if (contexts.length > 0) {
-                    Editor.sendToPanel('scene.panel', 'scene:paste-nodes', contexts[0]);
-                }
+                Editor.sendToPanel('scene.panel', 'scene:paste-nodes', contexts.length > 0 ? contexts[0] : '');
             },
         },
 
