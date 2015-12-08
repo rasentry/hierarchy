@@ -1,53 +1,53 @@
 :host {
-    display: block;
-    box-sizing: border-box;
+  display: block;
+  box-sizing: border-box;
 
-    position: relative;
+  position: relative;
 
-    min-width: 100px;
-    min-height: 100px;
+  min-width: 100px;
+  min-height: 100px;
 }
 
 #content {
-    padding: 1px 5px;
-    overflow-x: hidden;
-    overflow-y: auto;
+  padding: 1px 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .highlight {
-    display: none;
+  display: none;
 
-    position: absolute;
-    border: 2px solid #c7722c;
-    box-sizing: border-box;
+  position: absolute;
+  border: 2px solid #c7722c;
+  box-sizing: border-box;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .highlight[invalid] {
-    border: 2px solid #f00;
+  border: 2px solid #f00;
 }
 
 .insert {
-    display: none;
+  display: none;
 
-    position: absolute;
-    border: 1px solid #0f0;
-    box-sizing: border-box;
+  position: absolute;
+  border: 1px solid #0f0;
+  box-sizing: border-box;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 #nameInput {
-    position: absolute;
-    height: 18px;
-    /* width: calc(100% - 11px); */
+  position: absolute;
+  height: 18px;
+  /* width: calc(100% - 11px); */
 }
 
 :host ::content hierarchy-item > #content > hierarchy-item {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 :host[focused] ::content hierarchy-item[selected] > #bar {
-    background-color: #059;
+  background-color: #059;
 }

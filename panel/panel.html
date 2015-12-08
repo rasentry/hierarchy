@@ -1,0 +1,68 @@
+<link rel="import" href="packages://ui-kit/widget/index.html">
+<link rel="import" href="hierarchy-tree.html">
+
+<dom-module id="editor-hierarchy">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+      }
+
+      .fa-unlink {
+        font-size: 14px;
+
+        color: #f00;
+        cursor: pointer;
+      }
+
+      .fa-link {
+        font-size: 14px;
+
+        color: #0f0;
+        cursor: default;
+      }
+
+      .fa-link.waiting {
+        font-size: 14px;
+
+        color: #f90;
+        cursor: default;
+      }
+
+      .tree-view {
+        position: relative;
+      }
+    </style>
+
+    <editor-toolbar>
+      <editor-button id="createBtn" on-click="_onCreateClick">
+        <i class="fa fa-plus"></i>
+      </editor-button>
+      <editor-input
+        id="search"
+        class="flex-1"
+        input-value="{{searchPattern}}"
+        placeholder="Search..."
+        on-confirm="_onSearchConfirm"
+      >
+      </editor-input>
+      <i class$="{{_connectClass(connectState)}}"
+        on-click="_onStateClick"
+        >
+      </i>
+    </editor-toolbar>
+
+    <div class="tree-view flex-1">
+      <hierarchy-tree id="tree" class="fit"></hierarchy-tree>
+      <hierarchy-tree id="searchResult" class="fit" hidden></hierarchy-tree>
+      <editor-loader id="loader" hidden
+        text="Connecting"
+        mask
+      >
+      </editor-loader>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="panel.js"></script>
+</dom-module>
+

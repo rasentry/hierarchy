@@ -1,31 +1,54 @@
 <dom-module id="hierarchy-item">
-    <link rel="import" type="css" href="packages://ui-tree/widget/tree-item.css">
-    <link rel="import" type="css" href="hierarchy-item.css">
+  <link rel="import" type="css" href="packages://ui-tree/widget/tree-item.css">
 
-    <template>
-        <div id="bar"
-            on-mouseenter="_onMouseEnter"
-            on-mouseleave="_onMouseLeave"
-            ></div>
-        <div id="header"
-            on-mouseenter="_onMouseEnter"
-            on-mouseleave="_onMouseLeave"
-            >
-            <div class="wrapper">
-                <i id="foldIcon" class$="{{_foldIconClass(folded)}}"
-                   on-mousedown="_onFoldMouseDown"
-                   on-click="_onFoldClick"
-                   on-dblclick="_onFoldDblClick"
-                   >
-                </i>
-                <img id="icon" draggable="false" hidden></img>
-                <span id="name" class$="{{_nameClass(name)}}">{{_nameText(name)}}</span>
-            </div>
-        </div>
-        <div id="content">
-            <content></content>
-        </div>
-    </template>
+  <template>
+    <style>
+      :host[hovering] > #header > .wrapper {
+        color: #f90;
+      }
 
-    <script type="text/javascript" src="hierarchy-item.js"></script>
+      :host[highlighted] > #header {
+        background-color: #c7722c;
+      }
+
+      :host[highlighted] > #header > .wrapper {
+        color: black;
+        font-weight: bold;
+      }
+
+      :host[invalid] > #header {
+        background-color: #f00;
+      }
+
+      :host[invalid] > #header > .wrapper {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+
+    <div id="bar"
+      on-mouseenter="_onMouseEnter"
+      on-mouseleave="_onMouseLeave"
+      ></div>
+    <div id="header"
+      on-mouseenter="_onMouseEnter"
+      on-mouseleave="_onMouseLeave"
+      >
+      <div class="wrapper">
+        <i id="foldIcon" class$="{{_foldIconClass(folded)}}"
+           on-mousedown="_onFoldMouseDown"
+           on-click="_onFoldClick"
+           on-dblclick="_onFoldDblClick"
+           >
+        </i>
+        <img id="icon" draggable="false" hidden></img>
+        <span id="name" class$="{{_nameClass(name)}}">{{_nameText(name)}}</span>
+      </div>
+    </div>
+    <div id="content">
+      <content></content>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="hierarchy-item.js"></script>
 </dom-module>
