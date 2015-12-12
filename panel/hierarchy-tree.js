@@ -2,7 +2,10 @@
   'use strict';
 
   const Path = require('fire-path');
-  const treeDiff = Editor.require('packages://hierarchy/utils/tree-diff');
+
+  // HACK: packages://hierarchy/utils/tree-diff will lead to a Ipc.sendSync blocking problem
+  //       so I change it to app:// which will not lead to any Remote function
+  const treeDiff = Editor.require('app://builtin/hierarchy/utils/tree-diff');
 
   Editor.registerElement({
 
