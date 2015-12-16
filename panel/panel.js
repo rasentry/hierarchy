@@ -24,6 +24,10 @@
       }, -1);
     },
 
+    _T: function (text_id) {
+      return Editor.T(text_id);
+    },
+
     focusOnSearch ( event ) {
       if ( event ) {
         event.stopPropagation();

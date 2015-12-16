@@ -12,7 +12,7 @@
   },
   "main": "main.js",
   "menus": {
-    "Panel/Hierarchy": {
+    "i18n:MAIN_MENU.panel.title/i18n:MAIN_MENU.panel.hierarchy": {
       "icon": "panel/icon.png",
       "accelerator": "CmdOrCtrl+4",
       "message": "hierarchy:open"
@@ -22,7 +22,7 @@
     "panel": {
       "frame": "panel/panel.html",
       "type": "dockable",
-      "title": "Hierarchy",
+      "title": "i18n:MAIN_MENU.panel.hierarchy",
       "icon": "panel/icon.png",
       "width": 200,
       "shortcuts": {
