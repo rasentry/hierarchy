@@ -67,6 +67,8 @@
             id: info.id,
             name: info.name,
             folded: false,
+            prefab: info.isPrefab,
+            deactivated: !info.isActive,
           });
         }
       });
@@ -567,11 +569,13 @@
             newEL = this._newEntryRecursively(node, id2el);
             newParent = cmd.parentId !== null ? id2el[cmd.parentId] : this;
             newParent.folded = false;
-            // TODO node.isPrefab, node.isActive
+
             this.addItem( newParent, newEL, {
               id: node.id,
               name: node.name,
-              //canHaveChildren: node.canHaveChildren !== false,
+              prefab: node.isPrefab,
+              deactivated: !node.isActive,
+              // canHaveChildren: node.canHaveChildren !== false,
             } );
             this._hintNew( newEL );
             break;
@@ -609,7 +613,12 @@
               this._hintRename( this._id2el[cmd.id] );
             }
             else {
-              // TODO isPrefab, isActive
+              el = id2el[cmd.id];
+              if ( cmd.property === 'isPrefab' ) {
+                el.prefab = cmd.value;
+              } else if ( cmd.property === 'isActive' ) {
+                el.deactivated = !cmd.value;
+              }
             }
             break;
 
@@ -642,11 +651,12 @@
             newEL = this._newEntryRecursively(node, id2el);
             newParent = cmd.parentId !== null ? id2el[cmd.parentId] : this;
             newParent.folded = false;
-            // TODO node.isPrefab, node.isActive
             this.addItem( newParent, newEL, {
               id: node.id,
               name: node.name,
-              //canHaveChildren: node.canHaveChildren !== false,
+              prefab: node.isPrefab,
+              deactivated: !node.isActive,
+              // canHaveChildren: node.canHaveChildren !== false,
             } );
             this._hintNew( newEL );
             beforeNode = Polymer.dom(newParent).childNodes[cmd.index];
@@ -711,7 +721,9 @@
         this.addItem( this, newEL, {
           id: entry.id,
           name: entry.name,
-          //canHaveChildren: entry.canHaveChildren !== false,
+          prefab: entry.isPrefab,
+          deactivated: !entry.isActive,
+          // canHaveChildren: entry.canHaveChildren !== false,
         } );
 
         newEL.folded = false;
@@ -734,7 +746,9 @@
           this.addItem( el, childEL, {
             id: childEntry.id,
             name: childEntry.name,
-            //canHaveChildren: childEntry.canHaveChildren !== false,
+            prefab: childEntry.isPrefab,
+            deactivated: !childEntry.isActive,
+            // canHaveChildren: childEntry.canHaveChildren !== false,
           } );
           // childEL.folded = false;
         });
