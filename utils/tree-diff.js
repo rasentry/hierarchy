@@ -13,14 +13,32 @@
 function compareItemProps (context, lastItem, newItem) {
   var cmds = context.cmds;
 
-  // compare name
+  // compare states
   if (lastItem.name !== newItem.name) {
     cmds.push({
-      op: 'rename',
+      op: 'set-property',
+      property: 'name',
       id: lastItem.id,
-      name: newItem.name
+      value: newItem.name
     });
   }
+  if (lastItem.isPrefab !== newItem.isPrefab) {
+    cmds.push({
+      op: 'set-property',
+      property: 'isPrefab',
+      id: lastItem.id,
+      value: newItem.isPrefab
+    });
+  }
+  if (lastItem.isActive !== newItem.isActive) {
+    cmds.push({
+      op: 'set-property',
+      property: 'isActive',
+      id: lastItem.id,
+      value: newItem.isActive
+    });
+  }
+
   // compare children
   var i, len;
   var lastChildren = lastItem.children;
