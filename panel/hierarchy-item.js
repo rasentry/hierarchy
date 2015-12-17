@@ -60,6 +60,18 @@
         value: false,
         reflectToAttribute: true
       },
+
+      deactivated: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+
+      prefab: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
     },
 
     listeners: {

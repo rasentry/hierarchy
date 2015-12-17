@@ -3,6 +3,14 @@
 
   <template>
     <style>
+      :host[prefab] > #header > .wrapper {
+        color: #09f;
+      }
+
+      :host[deactivated] > #header > .wrapper {
+        color: #666;
+      }
+
       :host[hovering] > #header > .wrapper {
         color: #f90;
       }
