@@ -567,6 +567,7 @@
             newEL = this._newEntryRecursively(node, id2el);
             newParent = cmd.parentId !== null ? id2el[cmd.parentId] : this;
             newParent.folded = false;
+            // TODO node.isPrefab, node.isActive
             this.addItem( newParent, newEL, {
               id: node.id,
               name: node.name,
@@ -606,6 +607,12 @@
             this.renameItemById(cmd.id, cmd.name);
             this._hintRename( this._id2el[cmd.id] );
             break;
+          case 'set-isPrefab':
+            // TODO cmd.id, cmd.isPrefab
+            break;
+          case 'set-isActive':
+            // TODO cmd.id, cmd.isActive
+            break;
 
           case 'move':
             el = id2el[cmd.id];
@@ -636,6 +643,7 @@
             newEL = this._newEntryRecursively(node, id2el);
             newParent = cmd.parentId !== null ? id2el[cmd.parentId] : this;
             newParent.folded = false;
+            // TODO node.isPrefab, node.isActive
             this.addItem( newParent, newEL, {
               id: node.id,
               name: node.name,

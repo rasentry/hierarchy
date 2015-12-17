@@ -61,30 +61,38 @@ describe('diff result', function() {
     });
   });
 
-  describe('name changes', function() {
+  describe('attribute changes', function() {
     it('should be detected', function() {
       var oldData = [
         {
           id: 0,
           name: '0',
-          children: null
+          children: null,
+          isActive: false,
+          isPrefab: true,
         },
         {
           id: 4,
           name: '4',
-          children: null
+          children: null,
+          isActive: true,
+          isPrefab: false,
         }
       ];
       var newData = [
         {
           id: 0,
           name: 'Zero',
-          children: null
+          children: null,
+          isActive: true,
+          isPrefab: false,
         },
         {
           id: 4,
           name: 'Four',
-          children: null
+          children: null,
+          isActive: false,
+          isPrefab: true
         }
       ];
       var diff = treeDiff(oldData, newData);
@@ -96,10 +104,30 @@ describe('diff result', function() {
             name: 'Zero'
           },
           {
+            op: 'set-isPrefab',
+            id: 0,
+            isPrefab: false
+          },
+          {
+            op: 'set-isActive',
+            id: 0,
+            isActive: true
+          },
+          {
             op: 'rename',
             id: 4,
             name: 'Four'
-          }
+          },
+          {
+            op: 'set-isPrefab',
+            id: 4,
+            isPrefab: true
+          },
+          {
+            op: 'set-isActive',
+            id: 4,
+            isActive: false
+          },
         ],
         equal: false
       });
@@ -469,16 +497,22 @@ describe('diff result', function() {
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 1,
           name: '1',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 2,
           name: '2',
+          isPrefab: false,
+          isActive: true,
           children: null
         }
       ];
@@ -486,16 +520,22 @@ describe('diff result', function() {
         {
           id: 2,
           name: '2',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 1,
           name: '1',
+          isPrefab: false,
+          isActive: true,
           children: null
         }
       ];
@@ -513,7 +553,9 @@ describe('diff result', function() {
             node: {
               id: 2,
               name: '2',
-              children: null
+              children: null,
+              isPrefab: false,
+              isActive: true,
             }
           },
         ],
@@ -525,16 +567,22 @@ describe('diff result', function() {
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 1,
           name: '1',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 2,
           name: '2',
+          isPrefab: false,
+          isActive: true,
           children: null
         }
       ];
@@ -542,16 +590,22 @@ describe('diff result', function() {
         {
           id: 2,
           name: '2',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: null
         },
         {
           id: 1,
           name: '1',
+          isPrefab: false,
+          isActive: true,
           children: null
         }
       ];
@@ -569,6 +623,8 @@ describe('diff result', function() {
             node: {
               id: 2,
               name: '2',
+              isPrefab: false,
+              isActive: true,
               children: null
             }
           }
@@ -582,14 +638,20 @@ describe('diff result', function() {
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: [
             {
               id: 1,
               name: '1',
+              isPrefab: false,
+              isActive: true,
               children: [
                 {
                    id: 2,
                    name: '2',
+                   isPrefab: false,
+                   isActive: true,
                    children: null
                 }
               ]
@@ -601,14 +663,20 @@ describe('diff result', function() {
         {
           id: 0,
           name: '0',
+          isPrefab: false,
+          isActive: true,
           children: [
             {
               id: 2,
               name: '2',
+              isPrefab: false,
+              isActive: true,
               children: [
                 {
                   id: 1,
                   name: '1',
+                  isPrefab: false,
+                  isActive: true,
                   children: null
                 }
               ]
@@ -630,11 +698,15 @@ describe('diff result', function() {
             node: {
               id: 2,
               name: '2',
+              isPrefab: false,
+              isActive: true,
               children: [
                 {
                   id: 1,
                   name: '1',
-                  children: null
+                  children: null,
+                  isPrefab: false,
+                  isActive: true,
                 }
               ]
             }
@@ -698,15 +770,33 @@ describe('diff result', function() {
           { op: 'remove', id: 3 },
           { op: 'append',
             parentId: 0,
-            node: { id: 1, name: '1', children: null }
+            node: {
+              id: 1,
+              name: '1',
+              children: null,
+              isPrefab: false,
+              isActive: true,
+            }
           },
           { op: 'append',
             parentId: 0,
-            node: { id: 2, name: '2', children: null }
+            node: {
+              id: 2,
+              name: '2',
+              children: null,
+              isPrefab: false,
+              isActive: true,
+            }
           },
           { op: 'append',
             parentId: null,
-            node: { id: 3, name: '3', children: null }
+            node: {
+              id: 3,
+              name: '3',
+              children: null,
+              isPrefab: false,
+              isActive: true,
+            }
           }
         ],
         equal: false
@@ -773,11 +863,15 @@ describe('diff result', function() {
                 {
                   id: 0,
                   name: '0',
+                  isPrefab: false,
+                  isActive: true,
                   children: null,
                 },
                 {
                   id: 1,
                   name: '1',
+                  isPrefab: false,
+                  isActive: true,
                   children: null,
                 },
               ]
@@ -785,7 +879,13 @@ describe('diff result', function() {
           },
           { op: 'append',
             parentId: null,
-            node: { id: 3, name: '3', children: null }
+            node: {
+              id: 3,
+              name: '3',
+              isPrefab: false,
+              isActive: true,
+              children: null
+            }
           },
         ],
         equal: false
