@@ -99,34 +99,40 @@ describe('diff result', function() {
       expect(diff).to.deep.equal({
         cmds: [
           {
-            op: 'rename',
+            op: 'set-property',
             id: 0,
-            name: 'Zero'
+            property: 'name',
+            value: 'Zero'
           },
           {
-            op: 'set-isPrefab',
+            op: 'set-property',
             id: 0,
-            isPrefab: false
+            property: 'isPrefab',
+            value: false
           },
           {
-            op: 'set-isActive',
+            op: 'set-property',
             id: 0,
-            isActive: true
+            property: 'isActive',
+            value: true
           },
           {
-            op: 'rename',
+            op: 'set-property',
             id: 4,
-            name: 'Four'
+            property: 'name',
+            value: 'Four'
           },
           {
-            op: 'set-isPrefab',
+            op: 'set-property',
             id: 4,
-            isPrefab: true
+            property: 'isPrefab',
+            value: true
           },
           {
-            op: 'set-isActive',
+            op: 'set-property',
+            property: 'isActive',
             id: 4,
-            isActive: false
+            value: false
           },
         ],
         equal: false
@@ -391,9 +397,10 @@ describe('diff result', function() {
             }
           },
           {
-            op: 'rename',
+            op: 'set-property',
             id: 4,
-            name: 'Four'
+            property: 'name',
+            value: 'Four'
           }
         ],
         equal: false
@@ -430,9 +437,10 @@ describe('diff result', function() {
             id: 0,
           },
           {
-            op: 'rename',
+            op: 'set-property',
             id: 4,
-            name: 'Four'
+            property: 'name',
+            value: 'Four'
           }
         ],
         equal: false
@@ -476,14 +484,16 @@ describe('diff result', function() {
             parentId: null
           },
           {
-            op: 'rename',
+            op: 'set-property',
             id: 0,
-            name: 'Zero'
+            property: 'name',
+            value: 'Zero'
           },
           {
-            op: 'rename',
+            op: 'set-property',
             id: 4,
-            name: 'Four'
+            property: 'name',
+            value: 'Four'
           }
         ],
         equal: false

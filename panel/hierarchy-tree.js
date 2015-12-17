@@ -603,15 +603,14 @@
           //  }
           //  break;
 
-          case 'rename':
-            this.renameItemById(cmd.id, cmd.name);
-            this._hintRename( this._id2el[cmd.id] );
-            break;
-          case 'set-isPrefab':
-            // TODO cmd.id, cmd.isPrefab
-            break;
-          case 'set-isActive':
-            // TODO cmd.id, cmd.isActive
+          case 'set-property':
+            if (cmd.property === 'name') {
+              this.renameItemById(cmd.id, cmd.value);
+              this._hintRename( this._id2el[cmd.id] );
+            }
+            else {
+              // TODO isPrefab, isActive
+            }
             break;
 
           case 'move':
