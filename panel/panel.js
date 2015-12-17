@@ -249,7 +249,7 @@
     },
 
     'hierarchy:show-path' ( id ) {
-      Editor.info( 'Path: %s, ID: %s', id, this.$.tree.getPathByID(id) );
+      Editor.info( `Path: ${this.$.tree.getPathByID(id)}, UUID: ${id}` );
     },
 
     waitForSceneReady () {
