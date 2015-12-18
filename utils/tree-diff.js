@@ -106,20 +106,7 @@ function compareChildren ( context, lastChildren, newChildren, parentId ) {
     var newItem = newChildren[newIndex];
 
     if (lastItem.id === newItem.id) {
-
-      var sameItem = lastItem.name === newItem.name;
-
-      var lastItemChildren = lastItem.children;
-      var newItemChildren = newItem.children;
-      if (sameItem && lastItemChildren === newItemChildren) {
-        if (lastItemChildren) {
-          // has children
-          compareChildren(context, lastItemChildren, newItemChildren, lastItem.id);
-        }
-      }
-      else {
-        compareItemProps(context, lastItem, newItem);
-      }
+      compareItemProps(context, lastItem, newItem);
       newIndex++;
       lastIndex++;
     }
