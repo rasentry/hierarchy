@@ -3,7 +3,7 @@
 function getContextTemplate () {
   return [
     {
-      label: 'Create',
+      label: Editor.T('HIERARCHY.create'),
       submenu: getCreateTemplate(true)
     },
 
@@ -13,7 +13,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Copy',
+      label: Editor.T('HIERARCHY.copy'),
       click () {
         let contexts = Editor.Selection.contexts('node');
         Editor.sendToPanel('scene.panel', 'scene:copy-nodes', contexts);
@@ -21,7 +21,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Paste',
+      label: Editor.T('HIERARCHY.paste'),
       click () {
         let contexts = Editor.Selection.contexts('node');
         Editor.sendToPanel('scene.panel', 'scene:paste-nodes', contexts.length > 0 ? contexts[0] : '');
@@ -29,7 +29,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Duplicate',
+      label: Editor.T('HIERARCHY.duplicate'),
       click () {
         let contexts = Editor.Selection.contexts('node');
         if ( contexts.length > 0 ) {
@@ -44,7 +44,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Rename',
+      label: Editor.T('HIERARCHY.rename'),
       click () {
         let contexts = Editor.Selection.contexts('node');
         if ( contexts.length > 0 ) {
@@ -54,7 +54,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Delete',
+      label: Editor.T('HIERARCHY.delete'),
       click () {
         let contexts = Editor.Selection.contexts('node');
         if ( contexts.length > 0 ) {
@@ -69,7 +69,7 @@ function getContextTemplate () {
     },
 
     {
-      label: 'Show Path',
+      label: Editor.T('HIERARCHY.show_path'),
       visible: Editor.isDev,
       click () {
         let contexts = Editor.Selection.contexts('node');
