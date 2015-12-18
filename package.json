@@ -20,6 +20,7 @@
   },
   "panels": {
     "panel": {
+      "popable": false,
       "frame": "panel/panel.html",
       "type": "dockable",
       "title": "i18n:MAIN_MENU.panel.hierarchy",
