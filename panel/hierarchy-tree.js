@@ -507,10 +507,16 @@
         return;
       }
 
-      if ( !event.detail.value ) {
-        this.$.nameInput._renamingEL = null;
-        this.$.nameInput.hidden = true;
-      }
+      this._renameFocused = event.detail.value;
+
+      // NOTE: it is possible user mouse click on rename input,
+      // which change the focused to false and then true again.
+      setTimeout(() => {
+        if ( !this._renameFocused ) {
+          this.$.nameInput._renamingEL = null;
+          this.$.nameInput.hidden = true;
+        }
+      },1);
     },
 
     // private methods
