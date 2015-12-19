@@ -50,7 +50,9 @@
            >
         </i>
         <img id="icon" draggable="false" hidden></img>
-        <span id="name" class$="{{_nameClass(name)}}">{{_nameText(name)}}</span>
+        <span id="name" class$="{{_nameClass(name)}}"
+          on-click="_onNameClick"
+          >{{_nameText(name)}}</span>
       </div>
     </div>
     <div id="content">

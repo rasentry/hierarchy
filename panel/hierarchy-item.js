@@ -171,8 +171,14 @@
 
       event.stopPropagation();
 
-      console.log('edit asset %s', this.name);
+      // TODO:
+      // console.log('edit asset %s', this.name);
       // this.fire('open');
+    },
+
+    _onNameClick () {
+      // NOTE: do not stopPropagation which will make onClick not invoke
+      this.fire('item-name-click');
     },
 
     _onFoldMouseDown ( event ) {
