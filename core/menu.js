@@ -82,7 +82,8 @@ function getContextTemplate () {
 }
 
 function getCreateTemplate ( isContextMenu ) {
-  let position = isContextMenu ? 'child' : 'sibling';
+  // let isSibling = isContextMenu ? false : true;
+  let isSibling = false; // NOTE: always be child
   let referenceID;
   if ( isContextMenu ) {
     let contexts = Editor.Selection.contexts('node');
@@ -98,7 +99,7 @@ function getCreateTemplate ( isContextMenu ) {
   Editor.Menu.walk( menuTmpl, item => {
     if ( item.params ) {
       item.params.push(referenceID);
-      item.params.push(position);
+      item.params.push(isSibling);
     }
   });
 
