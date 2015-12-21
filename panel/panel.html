@@ -35,13 +35,14 @@
     </style>
 
     <editor-toolbar>
-      <editor-button id="createBtn" on-click="_onCreateClick">
+      <editor-button title="[[_T('HIERARCHY.create')]]" id="createBtn" on-click="_onCreateClick">
         <i class="fa fa-plus"></i>
       </editor-button>
       <editor-input
         id="search"
         class="flex-1"
         input-value="{{searchPattern}}"
+        title="[[_T('HIERARCHY.search_tooltip')]]"
         placeholder="[[_T('SHARED.search')]]..."
       >
       </editor-input>
