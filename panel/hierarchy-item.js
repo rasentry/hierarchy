@@ -177,7 +177,7 @@
       // this.fire('open');
     },
 
-    _onNameClick () {
+    _onNameClick ( event ) {
       let selection = Editor.Selection.curSelection('node');
       if (
         Editor.Selection.confirmed('node') &&
