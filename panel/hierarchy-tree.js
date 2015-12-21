@@ -60,16 +60,16 @@
       this.clear();
 
       pattern = pattern.toLowerCase();
-      items.forEach(info => {
-        if (info.name.toLowerCase().indexOf(pattern) > -1) {
+      items.forEach(el => {
+        if (el.name.toLowerCase().indexOf(pattern) > -1) {
           let newEL = document.createElement('hierarchy-item');
 
           this.addItem(this, newEL, {
-            id: info.id,
-            name: info.name,
+            id: el.id,
+            name: el.name,
             folded: false,
-            prefab: info.isPrefab,
-            deactivated: !info.isActive,
+            prefab: el.prefab,
+            deactivated: el.deactivated,
           });
         }
       });
