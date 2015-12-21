@@ -169,6 +169,7 @@
         return;
       }
 
+      clearTimeout ( this._nameClickID );
       event.stopPropagation();
 
       // TODO:
@@ -177,8 +178,19 @@
     },
 
     _onNameClick () {
-      // NOTE: do not stopPropagation which will make onClick not invoke
-      this.fire('item-name-click');
+      let selection = Editor.Selection.curSelection('node');
+      if (
+        Editor.Selection.confirmed('node') &&
+        selection.length === 1 &&
+        selection[0] === this._userId
+      ) {
+        event.stopPropagation();
+
+        this._nameClickID = setTimeout(() => {
+          this._nameClickID = null;
+          this.fire('item-rename');
+        }, 300);
+      }
     },
 
     _onFoldMouseDown ( event ) {

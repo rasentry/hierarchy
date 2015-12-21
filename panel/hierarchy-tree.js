@@ -28,7 +28,7 @@
       'drop-area-accept': '_onDropAreaAccept',
       'item-selecting': '_onItemSelecting',
       'item-select': '_onItemSelect',
-      'item-name-click': '_onItemNameClick',
+      'item-rename': '_onItemRename',
     },
 
     properties: {
@@ -257,20 +257,8 @@
       }
     },
 
-    _onItemNameClick ( event ) {
-      event.stopPropagation();
-
-      let selection = Editor.Selection.curSelection('node');
-      let el = event.target;
-      if (
-        Editor.Selection.confirmed('node') &&
-        selection.length === 1 &&
-        selection[0] === el._userId
-      ) {
-        setTimeout(() => {
-          this.rename(el);
-        }, 300);
-      }
+    _onItemRename ( event ) {
+      this.rename(event.target);
     },
 
     _onMouseDown ( event ) {
