@@ -178,11 +178,15 @@
     },
 
     _onNameClick ( event ) {
+      let info = Editor.Selection.curGlobalActivate();
+      if ( info.type !== 'node' && info.id !== this._userId ) {
+        return;
+      }
+
       let selection = Editor.Selection.curSelection('node');
       if (
         Editor.Selection.confirmed('node') &&
-        selection.length === 1 &&
-        selection[0] === this._userId
+        selection.length === 1
       ) {
         event.stopPropagation();
 
